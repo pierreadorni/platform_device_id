@@ -17,8 +17,8 @@ class PlatformDeviceId {
       if (kIsWeb) {
         deviceId = await PlatformDeviceIdPlatform.instance.getDeviceId();
       } else if (Platform.isAndroid) {
-        AndroidDeviceInfo androidInfo = await deviceInfoPlugin.androidInfo;
-        deviceId = androidInfo.androidId;
+        const _androidIdPlugin = AndroidId();
+        deviceId = await _androidIdPlugin.getId();
       } else if (Platform.isIOS) {
         IosDeviceInfo iosInfo = await deviceInfoPlugin.iosInfo;
         deviceId = iosInfo.identifierForVendor;
